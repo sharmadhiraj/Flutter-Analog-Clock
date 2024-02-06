@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_analog_clock/components/hand.dart';
 
-class ClockWidget extends StatefulWidget {
-  const ClockWidget({super.key});
+class ClockFaceWidget extends StatefulWidget {
+  const ClockFaceWidget({super.key});
 
   @override
-  State<ClockWidget> createState() => _ClockWidgetState();
+  State<ClockFaceWidget> createState() => _ClockFaceWidgetState();
 }
 
-class _ClockWidgetState extends State<ClockWidget> {
+class _ClockFaceWidgetState extends State<ClockFaceWidget> {
   late Timer _timer;
   DateTime _currentTime = DateTime.now();
 
@@ -25,21 +25,19 @@ class _ClockWidgetState extends State<ClockWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        children: [
-          _buildMinuteHand(),
-          _buildHourHand(),
-          _buildSecondHand(),
-        ],
-      ),
+    return Stack(
+      children: [
+        _buildMinuteHand(),
+        _buildHourHand(),
+        _buildSecondHand(),
+      ],
     );
   }
 
   Widget _buildSecondHand() {
     return HandWidget(
       color: Colors.red,
-      length: 0.8,
+      length: 0.75,
       width: 2,
       tip: 0.1,
       angleRadians: _currentTime.second * 2 * 3.14159 / 60,
@@ -51,7 +49,7 @@ class _ClockWidgetState extends State<ClockWidget> {
       color: Colors.white,
       length: 0.65,
       width: 6,
-      angleRadians: _currentTime.hour * 2 * 3.14159 / 60,
+      angleRadians: _currentTime.minute * 2 * 3.14159 / 60,
     );
   }
 
