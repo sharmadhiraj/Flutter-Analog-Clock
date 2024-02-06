@@ -2,4 +2,6 @@
 
 Simple analog clock with Flutter, featuring smooth hand animations.
 
-## Work In Progress
+## Demo
+
+![Demo Gif](demo.gif)
