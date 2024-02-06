@@ -14,7 +14,7 @@ class AnalogClockApp extends StatelessWidget {
     return MaterialApp(
       title: Constant.appName,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: true,
       ),
       home: const HomeScreen(),
