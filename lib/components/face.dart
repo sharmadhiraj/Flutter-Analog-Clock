@@ -14,11 +14,15 @@ class _ClockFaceWidgetState extends State<ClockFaceWidget> {
   late Timer _timer;
   DateTime _currentTime = DateTime.now();
 
+  static const _secondHandMultiplier = 2 * 3.14159 / 60;
+  static const _minuteHandMultiplier = 2 * 3.14159 / 60;
+  static const _hourHandMultiplier = 2 * 3.14159 / 12;
+
   @override
   void initState() {
     super.initState();
     _timer = Timer.periodic(
-      const Duration(seconds: 1),
+      const Duration(milliseconds: 50),
       (timer) => setState(() => _currentTime = DateTime.now()),
     );
   }
@@ -40,7 +44,8 @@ class _ClockFaceWidgetState extends State<ClockFaceWidget> {
       length: 0.75,
       width: 2,
       tip: 0.1,
-      angleRadians: _currentTime.second * 2 * 3.14159 / 60,
+      angleRadians: (_currentTime.second + (_currentTime.millisecond / 1000)) *
+          _secondHandMultiplier,
     );
   }
 
@@ -49,7 +54,8 @@ class _ClockFaceWidgetState extends State<ClockFaceWidget> {
       color: Colors.white,
       length: 0.65,
       width: 6,
-      angleRadians: _currentTime.minute * 2 * 3.14159 / 60,
+      angleRadians: (_currentTime.minute + (_currentTime.second / 60)) *
+          _minuteHandMultiplier,
     );
   }
 
@@ -59,9 +65,7 @@ class _ClockFaceWidgetState extends State<ClockFaceWidget> {
       length: 0.5,
       width: 6,
       angleRadians: (_currentTime.hour % 12 + _currentTime.minute / 60) *
-          2 *
-          3.14159 /
-          12,
+          _hourHandMultiplier,
     );
   }
 

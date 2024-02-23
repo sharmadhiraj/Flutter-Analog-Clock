@@ -76,14 +76,20 @@ class HourMarker extends StatelessWidget {
   Widget _buildPreDefinedMarker(int hour, Alignment alignment) {
     return Align(
       alignment: alignment,
-      child: Text(
-        hour.toString(),
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: hour == 9 ? 4 : 0,
+          right: hour == 3 ? 4 : 0,
         ),
-        textAlign: TextAlign.center,
+        child: Text(
+          hour.toString(),
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
